@@ -9,6 +9,8 @@ LunchCheckController.$inject = ['$scope'];
 function LunchCheckController ($scope) {
   $scope.lunchMenu = "";
   $scope.message = "";
+  $scope.dinamicStyle = {};
+  $scope.textboxStyle = {};
 
   $scope.displayMessage = function () {
     var message = calculateMessage($scope.lunchMenu);
@@ -20,11 +22,14 @@ function LunchCheckController ($scope) {
     var returnString = "";
 
     if (string.length === 0) {
-
+      $scope.dinamicStyle = {color:"red"};
+      $scope.textboxStyle = {"border-color":"red"};
       returnString = "Please enter data first!";
 
     } else {
 
+      $scope.dinamicStyle = {color:"green"};
+      $scope.textboxStyle = {"border-color":"green"};
       var lunchArray = countLunchItems(string);
       if (lunchArray.length < 4) {
         returnString = "Enjoy!";
